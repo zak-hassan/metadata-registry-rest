@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~ Hibernate OGM, Domain model persistence for NoSQL datastores
+ ~
+ ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later
+ ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<module xmlns="urn:jboss:module:1.1" name="org.hibernate.ogm.neo4j.internal" slot="5.0.1.Final">
+    <properties>
+        <property name="jboss.api" value="private"/>
+    </properties>
+
+    <resources>
+        <resource-root path="lucene-core-3.6.2.jar"/>
+        <resource-root path="neo4j-lucene-index-2.3.5.jar" />
+        <resource-root path="parboiled-scala_2.11-1.1.7.jar" />
+        <resource-root path="scala-parser-combinators_2.11-1.0.4.jar" />
+        <resource-root path="scala-library-2.11.7.jar" />
+        <resource-root path="scala-reflect-2.11.7.jar" />
+        <resource-root path="neo4j-function-2.3.5.jar" />
+        <resource-root path="neo4j-io-2.3.5.jar" />
+        <resource-root path="neo4j-codegen-2.3.5.jar" />
+        <resource-root path="neo4j-logging-2.3.5.jar" />
+        <resource-root path="neo4j-primitive-collections-2.3.5.jar" />
+        <resource-root path="neo4j-unsafe-2.3.5.jar" />
+        <resource-root path="neo4j-cypher-compiler-1.9_2.11-2.0.5.jar" />
+        <resource-root path="neo4j-cypher-compiler-2.2_2.11-2.2.9.jar" />
+        <resource-root path="neo4j-cypher-compiler-2.3-2.3.5.jar" />
+        <resource-root path="neo4j-cypher-frontend-2.3-2.3.5.jar" />
+        <resource-root path="concurrentlinkedhashmap-lru-1.4.2.jar" />
+        <resource-root path="commons-lang3-3.3.2.jar" />
+    </resources>
+
+    <dependencies>
+        <module name="javax.api"/>
+        <module name="javax.transaction.api"/>
+
+        <module name="org.hibernate.ogm.internal.parboiled" slot="5.0"/>
+
+        <!-- neo4j-lucene-index requires the API in the Kernel -->
+        <module name="org.hibernate.ogm.neo4j" slot="5.0"/>
+
+        <!-- It requires sun.misc.Unsafe -->
+        <module name="sun.jdk" />
+    </dependencies>
+</module>

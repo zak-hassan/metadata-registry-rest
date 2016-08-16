@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~ Hibernate OGM, Domain model persistence for NoSQL datastores
+ ~
+ ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later
+ ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<module xmlns="urn:jboss:module:1.1" name="org.hibernate.ogm.internal.parboiled" slot="5.0">
+    <resources>
+        <resource-root path="parboiled-java-1.1.7.jar" />
+        <resource-root path="parboiled-core-1.1.7.jar" />
+        <resource-root path="asm-5.0.3.jar" />
+        <resource-root path="asm-tree-5.0.3.jar" />
+        <resource-root path="asm-analysis-5.0.3.jar" />
+        <resource-root path="asm-util-5.0.3.jar" />
+    </resources>
+</module>
