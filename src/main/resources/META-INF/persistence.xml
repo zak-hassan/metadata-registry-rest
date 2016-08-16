@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="MONGO_PU" transaction-type="JTA">
+		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+		<class>com.redhat.data.analytics.model.Schema</class>
+		 <properties>
+		    <property name="hibernate.ogm.datastore.provider" value="mongodb"></property>
+		    <!-- By Default it will listen for mongo connections on 127.0.0.1 in wildfly running in docker we will pass in an ip address of another container running mongo.
+		   $JBOSS_HOME/bin/standalone.sh -b 0.0.0.0 -Dhibernate.ogm.datastore.host=$MONGODB_HOST_IP
+		     -->
+             <property name="hibernate.ogm.datastore.create_database" value="true"></property>
+            <property name="hibernate.ogm.datastore.database" value="metaregistry"></property>
+            <property name="hibernate.ogm.mongodb.connection_timeout" value="5000"></property>
+            <property name="hibernate.ogm.mongodb.authentication_mechanism" value="PLAIN"></property>
+            <property name="hibernate.ogm.datastore.document.association_storage" value="IN_ENTITY"></property>
+            <property name="hibernate.ogm.mongodb.association_document_storage" value="GLOBAL_COLLECTION"></property>
+            <property name="hibernate.ogm.mongodb.write_concern" value="ACKNOWLEDGED"></property>
+            <property name="hibernate.ogm.mongodb.read_preference" value="PRIMARY_PREFERRED"></property>
+		</properties>
+	</persistence-unit>
+</persistence>

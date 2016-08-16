@@ -1,0 +1,1 @@
+deploy /opt/jaxrs-1.0-SNAPSHOT.war --force

@@ -1,0 +1,188 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a schema registry to be run on openshift",
+    "version" : "v1",
+    "title" : "Metadata Registry",
+    "termsOfService" : "https://github.com/jhalliday/metadatapoc/blob/master/README.md",
+    "contact" : {
+      "name" : "Zak Hassan",
+      "url" : "https://github.com/zmhassan",
+      "email" : "zak.hassan@redhat.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "metadata.IP.xip.io",
+  "basePath" : "/api",
+  "tags" : [ {
+    "name" : "schema"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/schema" : {
+      "get" : {
+        "tags" : [ "schema" ],
+        "summary" : "Get All Schemas",
+        "description" : "Provides list of schema persisted to the database",
+        "operationId" : "getAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "schema" ],
+        "summary" : "Create Schema",
+        "description" : "Inserts a new schema into the database",
+        "operationId" : "add",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "schema json posted",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Schema"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          },
+          "400" : {
+            "description" : "Bad Request Invalid Id"
+          }
+        }
+      }
+    },
+    "/schema/update" : {
+      "put" : {
+        "tags" : [ "schema" ],
+        "summary" : "Update Schema",
+        "description" : "Update schema entry with the id provided in the url",
+        "operationId" : "update",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "schema json posted",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Schema"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          },
+          "400" : {
+            "description" : "Bad Request Invalid Id"
+          }
+        }
+      }
+    },
+    "/schema/{id}" : {
+      "get" : {
+        "tags" : [ "schema" ],
+        "summary" : "Get Schema By Id",
+        "description" : "Query the database for Schema entry with the id provided in the url path",
+        "operationId" : "getById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of Schema needed",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          },
+          "400" : {
+            "description" : "Bad Request Invalid Id"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "schema" ],
+        "summary" : "Delete Schema By Id",
+        "description" : "Delete Schema from database with the id provided in the url",
+        "operationId" : "delete",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of Schema needed",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          },
+          "400" : {
+            "description" : "Bad Request Invalid Id"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "metadata_auth" : {
+      "type" : "oauth2",
+      "authorizationUrl" : "http://swagger.io/api/oauth/dialog",
+      "flow" : "implicit",
+      "scopes" : {
+        "write:pets" : "modify schema registry",
+        "read:pets" : "read schema registry"
+      }
+    }
+  },
+  "definitions" : {
+    "Schema" : {
+      "type" : "object",
+      "properties" : {
+        "schemaId" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "namespace" : {
+          "type" : "string"
+        },
+        "doc" : {
+          "type" : "string"
+        },
+        "fields" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/SchemaField"
+          }
+        }
+      }
+    },
+    "SchemaField" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
