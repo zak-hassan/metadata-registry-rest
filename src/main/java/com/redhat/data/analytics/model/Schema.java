@@ -10,14 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
-
+import org.hibernate.search.annotations.Indexed;
+ 
 /**
  * Schema Registry store
  * 
  * @author Zak Hassan <zak.hassan1010@redhat.com>
  */
 @Entity
-//@Indexed
+@Indexed
 public class Schema {
 
   @Id

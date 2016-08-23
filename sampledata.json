@@ -1,0 +1,20 @@
+{
+	"name" : "a",
+	"namespace" : "a",
+	"doc" : "a",
+	"type" : "a",
+	"fields" : [
+		{
+			"name" : "age",
+			"type" : "string"
+		},
+		{
+			"name" : "occupation",
+			"type" : "string"
+		},
+		{
+			"name" : "name",
+			"type" : "string"
+		}
+	]
+}

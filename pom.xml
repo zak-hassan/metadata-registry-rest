@@ -2,12 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-    <!--	<parent>
-		<artifactId>metadata-parent</artifactId>
-		<groupId>org.jboss.perspicuus</groupId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
--->
+	<!-- <parent> <artifactId>metadata-parent</artifactId> <groupId>org.jboss.perspicuus</groupId> 
+		<version>1.0.0-SNAPSHOT</version> </parent> -->
 	<groupId>com.redhat.data.analytics</groupId>
 	<artifactId>jaxrs</artifactId>
 	<version>1.0-SNAPSHOT</version>
@@ -58,8 +54,8 @@
 		</testResources>
 		<pluginManagement>
 			<plugins>
-				<!-- May be used to run the application for manual testing, e.g. via
-					curl; Run "mvn pre-integration-test" once to prepare the server and modules,
+				<!-- May be used to run the application for manual testing, e.g. via 
+					curl; Run "mvn pre-integration-test" once to prepare the server and modules, 
 					then the server can be started via "mvn wildfly:run" -->
 				<plugin>
 					<groupId>org.wildfly.plugins</groupId>
@@ -68,7 +64,7 @@
 					<configuration>
 						<jboss-home>${jboss.home}</jboss-home>
 						<modules-path>${ogm.module.path}</modules-path>
-						<!-- <javaOpts> <javaOpt>-Xdebug</javaOpt> <javaOpt>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5000</javaOpt>
+						<!-- <javaOpts> <javaOpt>-Xdebug</javaOpt> <javaOpt>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5000</javaOpt> 
 							</javaOpts> -->
 					</configuration>
 				</plugin>
@@ -147,85 +143,23 @@
 				</executions>
 			</plugin>
 			<!-- Fabric8 maven tools -->
-			<!-- <plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>fabric8-maven-plugin</artifactId>
-				<version>${fabric.version}</version>
-				<configuration>
- 					<images>
-						<image>
-							<name>metadata-registry-ws</name>
- 							<alias>metadata-app</alias>
-							<build>
-								<from>docker.io/anapsix/docker-oracle-java8</from>
-								<assembly>
-									<basedir>/opt</basedir>
-									<descriptorRef>artifact-with-dependencies</descriptorRef>
-								</assembly>
-								<env>
-									<JBOSS_HOME>/opt/wildfly-10.0.0.Final</JBOSS_HOME>
-									<JBOSS_MODULEPATH>/opt/wildfly-10.0.0.Final:/opt/hibernate_ogm_wildfly10-5.0.1</JBOSS_MODULEPATH>
-									<MONGODB_HOST_IP>192.168.99.100</MONGODB_HOST_IP>
-								</env>
-							</build>
-						</image>
-					</images>
-					<resources>
-						<labels>
-							<group>metadata-rest</group>
-						</labels>
-
-						<deployment>
-							<name>${project.artifactId}</name>
-							<replicas>1</replicas>
-
-							<containers>
-								<container>
-									<alias>metadata-app</alias>
-									<ports>
-										<port>18080</port>
-										<port>9990</port>
-										<port>4447</port>
-										<port>5455</port>
-										<port>7500</port>
-										<port>45700</port>
-										<port>45700</port>
-										<port>45688</port>
-										<port>55200</port>
-										<port>54200</port>
-										<port>23364</port>
-									</ports>
-									<mounts>
-										<scratch>/var/scratch</scratch>
-									</mounts>
-								</container>
-							</containers>
-							<volumes>
-								<volume>
-									<name>scratch</name>
-									<type>emptyDir</type>
-								</volume>
-							</volumes>
-						</deployment>
-
-						<services>
-							<service>
-								<name>metadata-service</name>
-								<headless>true</headless>
-							</service>
-						</services>
-					</resources>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>resource</goal>
-							<goal>build</goal>
-
-						</goals>
-					</execution>
-				</executions>
-			</plugin> -->
+			<!-- <plugin> <groupId>io.fabric8</groupId> <artifactId>fabric8-maven-plugin</artifactId> 
+				<version>${fabric.version}</version> <configuration> <images> <image> <name>metadata-registry-ws</name> 
+				<alias>metadata-app</alias> <build> <from>docker.io/anapsix/docker-oracle-java8</from> 
+				<assembly> <basedir>/opt</basedir> <descriptorRef>artifact-with-dependencies</descriptorRef> 
+				</assembly> <env> <JBOSS_HOME>/opt/wildfly-10.0.0.Final</JBOSS_HOME> <JBOSS_MODULEPATH>/opt/wildfly-10.0.0.Final:/opt/hibernate_ogm_wildfly10-5.0.1</JBOSS_MODULEPATH> 
+				<MONGODB_HOST_IP>192.168.99.100</MONGODB_HOST_IP> </env> </build> </image> 
+				</images> <resources> <labels> <group>metadata-rest</group> </labels> <deployment> 
+				<name>${project.artifactId}</name> <replicas>1</replicas> <containers> <container> 
+				<alias>metadata-app</alias> <ports> <port>18080</port> <port>9990</port> 
+				<port>4447</port> <port>5455</port> <port>7500</port> <port>45700</port> 
+				<port>45700</port> <port>45688</port> <port>55200</port> <port>54200</port> 
+				<port>23364</port> </ports> <mounts> <scratch>/var/scratch</scratch> </mounts> 
+				</container> </containers> <volumes> <volume> <name>scratch</name> <type>emptyDir</type> 
+				</volume> </volumes> </deployment> <services> <service> <name>metadata-service</name> 
+				<headless>true</headless> </service> </services> </resources> </configuration> 
+				<executions> <execution> <goals> <goal>resource</goal> <goal>build</goal> 
+				</goals> </execution> </executions> </plugin> -->
 
 		</plugins>
 	</build>
@@ -260,6 +194,10 @@
 			<!-- <artifactId>hibernate-ogm-infinispan</artifactId> -->
 			<artifactId>hibernate-ogm-mongodb</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-orm</artifactId>
 		</dependency>
 		<!-- Only needed at build time for generating a mapper implementation -->
 		<dependency>
@@ -319,24 +257,9 @@
 		</dependency>
 	</dependencies>
 
-	<!-- <profiles>
-    <profile>
-     <id>openshift</id>
-     <build>
-        <finalName>SampleApp</finalName>
-        <plugins>
-          <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <outputDirectory>target</outputDirectory>
-              		  <warName>ROOT</warName>
-                </configuration>
-            </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles> -->
+	<!-- <profiles> <profile> <id>openshift</id> <build> <finalName>SampleApp</finalName> 
+		<plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> 
+		<version>2.3</version> <configuration> <failOnMissingWebXml>false</failOnMissingWebXml> 
+		<outputDirectory>target</outputDirectory> <warName>ROOT</warName> </configuration> 
+		</plugin> </plugins> </build> </profile> </profiles> -->
 </project>
