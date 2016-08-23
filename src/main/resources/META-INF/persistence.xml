@@ -15,7 +15,6 @@
              <property name="hibernate.ogm.datastore.create_database" value="true"></property>
             <property name="hibernate.ogm.datastore.database" value="metaregistry"></property>
             <property name="hibernate.ogm.mongodb.connection_timeout" value="5000"></property>
-            <!-- <property name="hibernate.ogm.mongodb.authentication_mechanism" value="PLAIN"></property> -->
             <property name="hibernate.ogm.datastore.document.association_storage" value="IN_ENTITY"></property>
             <property name="hibernate.ogm.mongodb.association_document_storage" value="GLOBAL_COLLECTION"></property>
             <property name="hibernate.ogm.mongodb.write_concern" value="ACKNOWLEDGED"></property>

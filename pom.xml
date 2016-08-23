@@ -60,7 +60,7 @@
 				<plugin>
 					<groupId>org.wildfly.plugins</groupId>
 					<artifactId>wildfly-maven-plugin</artifactId>
-					<version>1.1.0.Alpha1</version>
+					<version>1.1.0.Alpha11</version> 
 					<configuration>
 						<jboss-home>${jboss.home}</jboss-home>
 						<modules-path>${ogm.module.path}</modules-path>
@@ -195,11 +195,12 @@
 			<artifactId>hibernate-ogm-mongodb</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search-orm</artifactId>
+<!-- 		<dependency>
+		   <groupId>org.hibernate</groupId>
+		   <artifactId>hibernate-search-orm</artifactId>
 		</dependency>
-		<!-- Only needed at build time for generating a mapper implementation -->
+ -->
+ 		<!-- Only needed at build time for generating a mapper implementation -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-jdk8</artifactId>
