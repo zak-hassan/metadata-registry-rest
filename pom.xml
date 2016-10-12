@@ -60,7 +60,7 @@
 				<plugin>
 					<groupId>org.wildfly.plugins</groupId>
 					<artifactId>wildfly-maven-plugin</artifactId>
-					<version>1.1.0.Alpha11</version> 
+					<version>1.1.0.Alpha11</version>
 					<configuration>
 						<jboss-home>${jboss.home}</jboss-home>
 						<modules-path>${ogm.module.path}</modules-path>
@@ -195,12 +195,9 @@
 			<artifactId>hibernate-ogm-mongodb</artifactId>
 			<scope>provided</scope>
 		</dependency>
-<!-- 		<dependency>
-		   <groupId>org.hibernate</groupId>
-		   <artifactId>hibernate-search-orm</artifactId>
-		</dependency>
- -->
- 		<!-- Only needed at build time for generating a mapper implementation -->
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-search-orm</artifactId> 
+			</dependency> -->
+		<!-- Only needed at build time for generating a mapper implementation -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-jdk8</artifactId>
@@ -212,6 +209,18 @@
 			<artifactId>mapstruct-processor</artifactId>
 			<version>1.0.0.Beta4</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- Jolokia -->
+		<dependency>
+			<groupId>org.jolokia</groupId>
+			<artifactId>jolokia-client-java</artifactId>
+			<version>1.3.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
 		</dependency>
 
 		<!-- Testing -->
