@@ -7,7 +7,11 @@
 	<persistence-unit name="MONGO_PU" transaction-type="JTA">
 		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
 		<class>com.redhat.data.analytics.model.Schema</class>
-		 <properties>
+		<class>com.redhat.data.analytics.model.DataStream</class>
+		<class>com.redhat.data.analytics.model.SinkDataStream</class>
+		<class>com.redhat.data.analytics.model.SourceDataStream</class>
+
+		<properties>
 		    <property name="hibernate.ogm.datastore.provider" value="mongodb"></property>
 		    <!-- By Default it will listen for mongo connections on 127.0.0.1 in wildfly running in docker we will pass in an ip address of another container running mongo.
 		   $JBOSS_HOME/bin/standalone.sh -b 0.0.0.0 -Dhibernate.ogm.datastore.host=$MONGODB_HOST_IP

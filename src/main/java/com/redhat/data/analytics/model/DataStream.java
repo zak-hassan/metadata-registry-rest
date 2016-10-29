@@ -1,13 +1,11 @@
 package com.redhat.data.analytics.model;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.joda.time.DateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 /**
  * DataStream  store
@@ -17,9 +15,14 @@ import java.util.Date;
 @Entity
 public class DataStream {
 
-    public DataStream(String dataStreamId, String sourceId, String sinkId) {
+    public DataStream() {
+
+    }
+
+    public DataStream(String dataStreamId, String sourceId, String status, String sinkId) {
         this.dataStreamId = dataStreamId;
         this.sourceId = sourceId;
+        this.status = status;
         this.sinkId = sinkId;
     }
 
@@ -28,12 +31,24 @@ public class DataStream {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     String dataStreamId;
     //from
-    @Column(name="sourceId")
+    @Column(name = "sourceId")
     String sourceId;
 
+
+    @Column(name = "status") // Can only be running, paused or stopped
+            String status;
+
     // to
-    @Column(name="sinkId")
+    @Column(name = "sinkId")
     String sinkId;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getDataStreamId() {
         return dataStreamId;
@@ -67,14 +82,6 @@ public class DataStream {
                 ", sinkId='" + sinkId + '\'' +
                 '}';
     }
-
-    //TODO need to add these properties later.
-//    DateTime createdDate;
-//    DateTime expireDate;
-//    int interval;
-//    int startTime;
-//    int delay;
-//    DateTime createdDate;
 
 
 }

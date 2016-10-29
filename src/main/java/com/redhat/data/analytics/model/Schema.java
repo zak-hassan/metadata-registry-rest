@@ -17,7 +17,6 @@ import org.hibernate.annotations.GenericGenerator;
  * @author Zak Hassan <zak.hassan1010@redhat.com>
  */
 @Entity
-
 public class Schema {
 
   @Id
