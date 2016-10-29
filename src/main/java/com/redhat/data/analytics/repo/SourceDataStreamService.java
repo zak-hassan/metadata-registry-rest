@@ -1,42 +1,46 @@
 package com.redhat.data.analytics.repo;
 
-import com.redhat.data.analytics.model.SinkDataStream;
+import com.redhat.data.analytics.model.SourceDataStream;
 
-import java.util.Arrays;
+import javax.enterprise.context.ApplicationScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
  * Created by zhassan on 2016-10-25.
  */
-public class SinkDataStreamService {
+@ApplicationScoped
+public class SourceDataStreamService {
 
 
-    public static String delete(String id) {
-        return "deleted";//FIXME Implement delete logic
+    @PersistenceContext
+    private EntityManager em;
+
+    public SourceDataStreamService() {
     }
 
-    public static SinkDataStream get(String id) {
-        // FIXME Implement update logic
-        // SinkDataStream(String name, String sourceId, String schemaId, String ipaddress, String path)
-        return new SinkDataStream( "hdfs",   "file",   "schema-id1",   "127.0.0.1",   "/dataingest");
+    public void delete(SourceDataStream item) {
+        em.remove(item);
     }
 
-    public static List<SinkDataStream> getAll() {
-        // FIXME Auto-generated method stub
-        return Arrays.asList(new SinkDataStream( "hdfs",   "source-id-1",   "schema-id-1",   "127.0.0.1",   "/dataingest-1"),
-                new SinkDataStream( "amq",   "source-id-2",   "schema-id-2",   "127.0.0.1",   "/dataingest-2"),
-                new SinkDataStream( "kafka",   "source-id-3",   "schema-id-3",   "127.0.0.1",   "/dataingest-3"),
-                new SinkDataStream( "sftp",   "source-id-4",   "schema-id-4",   "127.0.0.1",   "/dataingest-4")
-                );
+    public SourceDataStream get(String id) {
+        SourceDataStream item = em.find(SourceDataStream.class, id);
+        return item;
     }
 
-    public SinkDataStream update(SinkDataStream item) {
-        // FIXME Implement update logic
-        return  item;
+    public List<SourceDataStream> getAll() {
+        List<SourceDataStream> resultList = em.createQuery("select p from SourceDataStream p", SourceDataStream.class).getResultList();
+        return resultList;
     }
 
-    public SinkDataStream add(SinkDataStream item) {
-        // FIXME Implement logic to save .
+    public SourceDataStream update(SourceDataStream item) {
+        return em.merge(item);
+
+    }
+
+    public SourceDataStream add(SourceDataStream item) {
+        em.persist(item);
         return item;
     }
 
